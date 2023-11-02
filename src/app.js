@@ -5,6 +5,8 @@ const SwaggerUi = require('swagger-ui-express');
 const express = require('express');
 const { buildHandlers } = require('./modules');
 const { handlers } = buildHandlers();
+const { listUserHandler } = require('./modules/handlers/User/listUsers');
+
 const port = Number(process.env.PORT || 8089)
 
 const app = express();
@@ -32,6 +34,8 @@ const onSwaggerCreated = (error, swaggerExpress) => {
   swaggerExpress.register(app); // register middlewares
   app.listen(port, () => console.info('onAppStart', { port }));
 };
+
+app.get('/api/v2/users', listUserHandler);
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 
