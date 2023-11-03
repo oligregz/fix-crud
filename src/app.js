@@ -37,7 +37,6 @@ const onSwaggerCreated = (error, swaggerExpress) => {
 };
 
 app.get('/api/v2/users', listUsersHandler);
-app.get('/api/v2/users/:id', listUserHandler);
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 
