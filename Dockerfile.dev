@@ -18,4 +18,4 @@ COPY --chown=node:node . .
 
 CMD ["dumb-init", "npm", "start"]
 
-
+# CMD ["npm", "run", "dev"]

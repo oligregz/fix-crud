@@ -7,7 +7,7 @@ const {
     getAllUsersService 
 } = require('../../services');
 
-const listUserHandler = async (req, res, next) => {
+const listUsersHandler = async (req, res, next) => {
     try{
         const {
             user_id
@@ -30,6 +30,22 @@ const listUserHandler = async (req, res, next) => {
     }
 }
 
+const listUserHandler = async (req, res, next) => {
+    try{
+        const { id } = req.params;
+        
+        // const has_user_id = !!user_id && Number.isFinite(+user_id) && false;
+
+        const user_response = getUserByIdService({ id });
+    
+
+        return res.status(httpStatusCodes.OK).send({id, user_response});
+    }catch(error){
+        return httpErrorHandler({ req, res, error })
+    }
+}
+
 module.exports = {
-    listUserHandler
+    listUserHandler,
+    listUsersHandler
 }
