@@ -19,10 +19,11 @@
   },
   "devDependencies": {
     "jest": "^28.1.0",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.22"
   },
   "scripts": {
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "dev": "nodemon ./src/app.js"
   },
   "author": "",
   "license": "ISC"
