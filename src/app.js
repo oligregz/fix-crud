@@ -7,6 +7,7 @@ const { buildHandlers } = require('./modules');
 const { handlers } = buildHandlers();
 const { listUsersHandler } = require('./modules/handlers/User/listUsers');
 const { createUserHandler } = require('./modules/handlers/User/createUser');
+const { updateUserHandler } = require('./modules/handlers/User/updateUser')
 
 const port = Number(process.env.PORT || 8089)
 
@@ -38,7 +39,8 @@ const onSwaggerCreated = (error, swaggerExpress) => {
 };
 
 app.get('/api/v2/users', listUsersHandler);
-app.post('/api/v2/users', createUserHandler)
+app.post('/api/v2/users', createUserHandler);
+app.put('/api/v2/users', updateUserHandler);
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 

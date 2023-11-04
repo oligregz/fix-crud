@@ -12,12 +12,12 @@ const updateUserHandler = async (req, res, next) => {
             full_name
         } = req.body
 
-        const updated_user = await updateUserService({
+        const updated_user = await updateUserService({user: {
             id,
             user_email,
             user_password,
             full_name
-        })
+        }})
 
         return res.status(httpStatusCodes.OK).send(updated_user);
     }catch(error){
