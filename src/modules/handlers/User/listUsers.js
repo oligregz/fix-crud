@@ -14,7 +14,6 @@ const listUsersHandler = async (req, res, next) => {
 
         if (user_id) {
             const user_idInt = parseInt(user_id, 10);
-            console.log("user_idInt: ", user_idInt);
 
             if (!isNaN(user_idInt)) {
                 const user_response = await getUserByIdService({ user_id: user_idInt });

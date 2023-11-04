@@ -26,4 +26,4 @@ const commitTransaction = ({ transaction }) => transaction.rollback();
 
 const rollbackTransaction = ({ transaction }) => transaction.rollback();
 
-module.exports = { getTransaction, commitTransaction, rollbackTransaction, client: knex };
+module.exports = { getTransaction, commitTransaction, rollbackTransaction, client: knex, knex };
