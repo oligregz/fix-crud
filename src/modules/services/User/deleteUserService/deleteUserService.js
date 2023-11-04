@@ -4,19 +4,17 @@ const deleteUserService = async ({
     user_id
 }) => {
 
-    const {
-        users = []
-    } = await getUserRepositories({
+    const user = await getUserRepositories({
         user_id
     });
 
-    const has_user = Array.isArray(users) && users.length === 1;
+    const has_user = Array.isArray(user) && user.length === 1;
 
     if(!has_user){
         throw new Error("No user to delete")
     }
 
-    const [user_to_delete] = users;
+    const [user_to_delete] = user;
 
     await deleteUserRepositories({
         user_id: user_to_delete.id
