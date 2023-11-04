@@ -2,23 +2,29 @@
 const httpStatusCodes = require('http-status-codes');
 const { httpErrorHandler } = require("../../common/handlers");
 const { createUserService } = require('../../services');
+const { getUserByIdService } = require('../../services');
 
-const createUserHandler = (req, res, next) => {
-    try{
+const createUserHandler = async (req, res, next) => {
+    try {
         const {
             user_email,
             user_password,
             full_name
         } = req.body
 
-        const created_user = createUserService({
+        const created_user = await createUserService({
             user_email,
             user_password,
             full_name
         })
 
-        return res.status(httpStatusCodes.OK).send(created_user);
-    }catch(error){
+        const response_user_id = await created_user;
+
+        const userExists = await getUserByIdService({ user_id: response_user_id });
+
+        return res.status(httpStatusCodes.StatusCodes.CREATED).send(userExists[0]);
+
+    } catch(error){
         return httpErrorHandler({ req, res, error })
     }
 }

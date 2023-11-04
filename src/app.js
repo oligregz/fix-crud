@@ -6,6 +6,7 @@ const express = require('express');
 const { buildHandlers } = require('./modules');
 const { handlers } = buildHandlers();
 const { listUsersHandler } = require('./modules/handlers/User/listUsers');
+const { createUserHandler } = require('./modules/handlers/User/createUser');
 
 const port = Number(process.env.PORT || 8089)
 
@@ -14,9 +15,10 @@ const app = express();
 const whitelist = [
   'http://localhost:8081',
   'http://localhost:8089'
-
+  
 ]
 
+app.use(express.json());
 app.use(cors({
   origin: whitelist.forEach((url) => url)
 }))
@@ -36,6 +38,7 @@ const onSwaggerCreated = (error, swaggerExpress) => {
 };
 
 app.get('/api/v2/users', listUsersHandler);
+app.post('/api/v2/users', createUserHandler)
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 

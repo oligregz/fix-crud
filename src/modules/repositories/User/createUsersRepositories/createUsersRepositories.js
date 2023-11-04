@@ -1,36 +1,18 @@
-const {
-    getTransaction,
-    commitTransaction,
-    rollbackTransaction
-} = require('../../../common/handlers')
+const { client } = require('../../../common/handlers/knex/knex');
 
-
-const createUserRepositories = async ({
-    user
-} = {}) => {
-    const { transaction } = await getTransaction();
-
+const createUserRepositories = async ({ user  }) => {
     try {
-        const {
-            user_created
-        } = await transaction('users').insert(user)
-        
-        const has_response = Array.isArray(user_created) && user_created.length > 0;
 
-        if (!has_response) {
-            return {
-                user_created: []
-            }
-        }
+        const response = await client('users')
+            .insert({
+                user_email: user.user_email,
+                user_password: user.user_password,
+                full_name: user.full_name
+            });
 
-        await commitTransaction({transaction})
-
-        return {
-            user_created
-        }
+        return response;
 
     } catch (err) {
-        rollbackTransaction({transaction})
         throw new Error(err)
     }
 }
