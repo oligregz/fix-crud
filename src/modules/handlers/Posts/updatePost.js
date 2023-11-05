@@ -9,15 +9,16 @@ const updatePostHandler = async (req, res, next) => {
             id,
             author_id,
             post_text
-        } = req.body
+        } = req.body;
 
-        const updated_post = await updatePostService({
+        const updated_post = await updatePostService({ post: {
             id,
             author_id,
             post_text
-        })
+        }});
 
-        return res.status(httpStatusCodes.OK).send(updated_post);
+        return res.status(httpStatusCodes.StatusCodes.OK).send(updated_post);
+
     }catch(error){
         return httpErrorHandler({ req, res, error })
     }
