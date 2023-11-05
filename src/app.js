@@ -9,7 +9,8 @@ const { listUsersHandler } = require('./modules/handlers/User/listUsers');
 const { createUserHandler } = require('./modules/handlers/User/createUser');
 const { updateUserHandler } = require('./modules/handlers/User/updateUser');
 const { deleteUserHandler } = require('./modules/handlers/User/deleteUser');
-const { listPostHandler } = require('./modules/handlers');
+const { listPostHandler } = require('./modules/handlers/Posts/listPost');
+
 
 const port = Number(process.env.PORT || 8089)
 
