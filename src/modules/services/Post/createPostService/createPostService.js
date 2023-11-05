@@ -7,35 +7,29 @@ const createPostService = async (post) => {
         author_id
     } = post;
 
-    const {
-        user
-    } = await getUserByIdService({
+    const user = await getUserByIdService({
         user_id: author_id
-    })
+    });
 
     const has_author = Array.isArray(user) && user.length > 0;
-    
-    if(has_author === false) {
-        throw new Error("Hasn't author in database")
+
+    if(!has_author) {
+        throw new Error("Hasn't author in database");
     }
 
-    const {
-        post_created
-    } = await createPostRepositories({
+    const post_created = await createPostRepositories({
         post
     });
 
     const has_post_created = Array.isArray(post_created) && post_created.length > 0;
 
-    if(has_post_created === false){
+    if(!has_post_created){
         return {
             post_created_id: []
         }  
     }
 
-    return {
-        post_created_id: post_created
-    };
+    return post_created;
 }
 
 module.exports = {

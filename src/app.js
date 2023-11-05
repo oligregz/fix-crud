@@ -10,6 +10,7 @@ const { createUserHandler } = require('./modules/handlers/User/createUser');
 const { updateUserHandler } = require('./modules/handlers/User/updateUser');
 const { deleteUserHandler } = require('./modules/handlers/User/deleteUser');
 const { listPostHandler } = require('./modules/handlers/Posts/listPost');
+const { createPostHandler } = require('./modules/handlers/Posts/createPost');
 
 
 const port = Number(process.env.PORT || 8089)
@@ -47,6 +48,7 @@ app.put('/api/v2/users', updateUserHandler);
 app.delete('/api/v2/users', deleteUserHandler);
 
 app.get('/api/v2/posts', listPostHandler);
+app.post('/api/v2/posts', createPostHandler)
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 

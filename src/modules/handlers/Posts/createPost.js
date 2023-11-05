@@ -9,16 +9,16 @@ const createPostHandler = async(req, res, next) => {
         const {
             post_text,
             author_id
-        } = req.body
+        } = req.body;
 
         const created_post = await createPostService({
             post_text,
             author_id
-        })
+        });
 
-        return res.status(httpStatusCodes.OK).send(created_post);
+        return res.status(httpStatusCodes.StatusCodes.CREATED).send({ created_post });
     }catch(error){
-        return httpErrorHandler({ req, res, error })
+        return httpErrorHandler({ req, res, error });
     }
 }
 
