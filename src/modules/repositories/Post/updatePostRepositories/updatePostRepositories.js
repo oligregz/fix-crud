@@ -12,17 +12,17 @@ const updatePostRepositories = async ({
     const { transaction } = await getTransaction();
 
     try {
-
         await transaction('posts').where({ id }).update({
             id,
             author_id,
             post_text
-        })
+        });
 
+        await commitTransaction({ transaction });
 
     } catch (err) {
-        rollbackTransaction({ transaction })
-        throw new Error(err)
+        rollbackTransaction({ transaction });
+        throw new Error(err);
     }
 }
 
