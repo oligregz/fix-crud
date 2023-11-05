@@ -32,7 +32,6 @@ const getPostByUserIdService = async ({ user_id, post_id }) => {
 
         return posts;
     }
-    throw new Error("Missing id key");
 }
 
 module.exports = {
