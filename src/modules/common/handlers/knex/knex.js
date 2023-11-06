@@ -3,10 +3,10 @@
 const knex = require('knex')({
     client: 'pg',
     connection: {
-      host: process.env.WRITER_MYSQL_HOST,
-      user: process.env.WRITER_MYSQL_USER,
-      port: process.env.WRITER_MYSQL_PORT,
-      password: process.env.WRITER_MYSQL_PASS,
+      host: process.env.WRITER_PG_HOST,
+      user: process.env.WRITER_PG_USER,
+      password: process.env.WRITER_PG_PASS,
+      port: process.env.PORT,
       database: 'main'
   },
   pool: {
