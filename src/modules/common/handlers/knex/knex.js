@@ -1,7 +1,7 @@
 'use strict'
 
 const knex = require('knex')({
-    client: 'mysql',
+    client: 'pg',
     connection: {
       host: process.env.WRITER_MYSQL_HOST,
       user: process.env.WRITER_MYSQL_USER,
