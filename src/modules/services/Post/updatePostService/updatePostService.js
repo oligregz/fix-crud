@@ -1,4 +1,4 @@
-const { getPostByPostIdRepositories, updatePostRepositories } = require("../../../repositories");
+const { getPostByPostIdRepositories, updatePostRepositories } = require('../../../repositories');
 
 const updatePostService = async ({ post: {
     id,
