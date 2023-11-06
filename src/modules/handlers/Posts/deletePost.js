@@ -14,12 +14,12 @@ const deletePostHandler = async (req, res, next) => {
         const {
             deletedPost
         } = await deletePostService({
-            post_id
-        })
+            post_id: post_id
+        });
 
-        return res.status(httpStatusCodes.OK).send({deletedPost})
+        return res.status(httpStatusCodes.StatusCodes.OK).send({deletedPost});
     }catch(error){
-        return httpErrorHandler({ req, res, error })
+        return httpErrorHandler({ req, res, error });
     }
 }
 
