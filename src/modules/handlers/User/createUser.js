@@ -16,13 +16,16 @@ const createUserHandler = async (req, res, next) => {
             user_email,
             user_password,
             full_name
-        })
+        });
 
-        const response_user_id = await created_user;
+        console.log
 
-        const userExists = await getUserByIdService({ user_id: response_user_id });
-
-        return res.status(httpStatusCodes.StatusCodes.CREATED).send(userExists[0]);
+        return res.status(httpStatusCodes.StatusCodes.CREATED).send({ user_created: {
+            user_id: created_user[0],
+            user_email,
+            user_password,
+            full_name
+        }});
 
     } catch(error){
         return httpErrorHandler({ req, res, error })

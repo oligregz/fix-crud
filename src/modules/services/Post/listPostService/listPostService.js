@@ -2,7 +2,7 @@ const { getUserByIdService } = require("../../User/getUserByIdService/getUserByI
 const { getPostByUserIdRepositories } = require("../../../repositories");
 const { getPostByPostIdRepositories } = require("../../../repositories");
 
-const getPostByUserIdService = async ({ user_id, post_id }) => {
+const getPostByIdService = async ({ user_id, post_id }) => {
 
     const has_user_id = typeof user_id === 'string' && !isNaN(user_id);
     const has_post_id = typeof post_id === 'string' && !isNaN(post_id);
@@ -10,7 +10,7 @@ const getPostByUserIdService = async ({ user_id, post_id }) => {
     if (has_user_id) {
         const user = await getUserByIdService({ user_id });
 
-        const has_author = Array.isArray(user) && user.length > 0;
+        const has_author = Array.isArray(user.user) && user.user.length > 0;
     
         if(!has_author) {
             throw new Error("Missing author in database");
@@ -35,5 +35,5 @@ const getPostByUserIdService = async ({ user_id, post_id }) => {
 }
 
 module.exports = {
-    getPostByUserIdService
+    getPostByIdService
 }

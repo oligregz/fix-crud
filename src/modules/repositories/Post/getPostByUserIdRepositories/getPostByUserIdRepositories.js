@@ -10,11 +10,13 @@ const getPostByUserIdRepositories = async ({
 
     const has_response = Array.isArray(response) && response.length > 0;
 
+
     if(!has_response){
         return posts = [];
     }
 
     const posts = response.map((post) => post);
+    console.log('posts: ', posts)
 
     return posts;
 
