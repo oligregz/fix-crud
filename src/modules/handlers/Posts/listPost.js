@@ -1,7 +1,7 @@
 'use strict'
 const httpStatusCodes = require('http-status-codes');
 const { httpErrorHandler } = require('../../common/handlers');
-const { getPostByUserIdService } = require('../../services');
+const { getPostByIdService } = require('../../services');
 
 const listPostHandler = async (req, res, next) => {
     try{
@@ -14,12 +14,12 @@ const listPostHandler = async (req, res, next) => {
         const has_post_id = typeof post_id === 'string' && !isNaN(post_id);
 
         if (has_user_id) {
-            const posts = await getPostByUserIdService({ user_id: user_id });
+            const posts = await getPostByIdService({ user_id: user_id });
     
             return res.status(httpStatusCodes.StatusCodes.OK).send({ posts });
 
         } else if (has_post_id) {
-            const posts = await getPostByUserIdService({ post_id: post_id });
+            const posts = await getPostByIdService({ post_id: post_id });
 
             return res.status(httpStatusCodes.StatusCodes.OK).send({ posts });
         }
