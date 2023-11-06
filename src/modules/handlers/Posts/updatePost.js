@@ -1,6 +1,6 @@
 'use strict'
 const httpStatusCodes = require('http-status-codes');
-const { httpErrorHandler } = require("../../common/handlers");
+const { httpErrorHandler } = require('../../common/handlers');
 const { updatePostService } = require('../../services');
 
 const updatePostHandler = async (req, res, next) => {
@@ -20,7 +20,7 @@ const updatePostHandler = async (req, res, next) => {
         return res.status(httpStatusCodes.StatusCodes.OK).send(updated_post);
 
     }catch(error){
-        return httpErrorHandler({ req, res, error })
+        return httpErrorHandler({ req, res, error });
     }
 }
 

@@ -2,7 +2,7 @@ const {
     getTransaction,
     commitTransaction,
     rollbackTransaction
-} = require('../../../common/handlers')
+} = require('../../../common/handlers');
 
 const updatePostRepositories = async ({
     id,

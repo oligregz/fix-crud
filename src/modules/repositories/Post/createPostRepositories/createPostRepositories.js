@@ -1,9 +1,8 @@
 const {
-    client,
     getTransaction,
     commitTransaction,
     rollbackTransaction
-} = require('../../../common/handlers')
+} = require('../../../common/handlers');
 
 
 const createPostRepositories = async ({
@@ -31,8 +30,8 @@ const createPostRepositories = async ({
         return post;
 
     } catch (err) {
-        rollbackTransaction({transaction})
-        throw new Error(err)
+        rollbackTransaction({transaction});
+        throw new Error(err);
     }
 }
 
