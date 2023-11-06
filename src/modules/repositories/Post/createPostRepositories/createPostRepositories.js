@@ -1,4 +1,5 @@
 const {
+
     getTransaction,
     commitTransaction,
     rollbackTransaction
@@ -27,7 +28,7 @@ const createPostRepositories = async ({
 
         commitTransaction({transaction});
 
-        return post;
+        return [ post ];
 
     } catch (err) {
         rollbackTransaction({transaction});

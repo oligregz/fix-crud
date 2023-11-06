@@ -11,7 +11,7 @@ const createPostService = async (post) => {
         user_id: author_id
     });
 
-    const has_author = Array.isArray(user) && user.length > 0;
+    const has_author = Array.isArray(user.user) && user.user.length > 0;
 
     if(!has_author) {
         throw new Error("Hasn't author in database");
