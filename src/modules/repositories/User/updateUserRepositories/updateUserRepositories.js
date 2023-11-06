@@ -14,17 +14,17 @@ const updateUserRepositories = async ({
 
     try {
 
-        await transaction('users').update({
+        await transaction('users').where({ id }).update({
             user_email,
             user_password,
             full_name
         })
 
-        await commitTransaction({ transaction })
+        await commitTransaction({ transaction });
 
     } catch (err) {
-        rollbackTransaction({ transaction })
-        throw new Error(err)
+        rollbackTransaction({ transaction });
+        throw new Error(err);
     }
 }
 
