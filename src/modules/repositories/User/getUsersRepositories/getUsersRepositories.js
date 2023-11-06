@@ -1,11 +1,10 @@
 const { 
     client
-} = require('../../../common/handlers')
-
+} = require('../../../common/handlers');
 
 const getUsersRepositories = async () => {
 
-    const response = await client('users')
+    const response = await client('users');
     
     const has_response = Array.isArray(response) && response.length > 0;
 
@@ -15,10 +14,7 @@ const getUsersRepositories = async () => {
         }
     }
 
-    return {
-        users: response
-    }
-
+    return response;
 }
 
 module.exports = {

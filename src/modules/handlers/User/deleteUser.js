@@ -13,9 +13,9 @@ const deleteUserHandler = async (req, res, next) => {
 
         const {
             deletedUser
-        } = await deleteUserService({ user_id: user_id })
+        } = await deleteUserService({ user_id: user_id });
 
-        return res.status(httpStatusCodes.OK).send({deletedUser})
+        return res.status(httpStatusCodes.StatusCodes.OK).send({deletedUser})
     }catch(error){
         return httpErrorHandler({ req, res, error })
     }

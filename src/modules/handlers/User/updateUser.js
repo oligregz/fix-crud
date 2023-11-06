@@ -10,18 +10,19 @@ const updateUserHandler = async (req, res, next) => {
             user_email,
             user_password,
             full_name
-        } = req.body
+        } = req.body;
 
-        const updated_user = await updateUserService({user: {
+        const updated_user = await updateUserService({ user: {
             id,
             user_email,
             user_password,
             full_name
-        }})
+        }});
 
-        return res.status(httpStatusCodes.OK).send(updated_user);
+        return res.status(httpStatusCodes.StatusCodes.OK).send(updated_user);
+
     }catch(error){
-        return httpErrorHandler({ req, res, error })
+        return httpErrorHandler({ req, res, error });
     }
 }
 
