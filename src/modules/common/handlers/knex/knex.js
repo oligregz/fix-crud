@@ -11,12 +11,7 @@ const knex = require('knex')({
   },
 });
 
-const getTransaction = async () => {
 
-    const transaction = await knex.transaction()
-
-    return {transaction};
-}
 
 const testDatabaseConnection = async () => {
   try {
@@ -33,6 +28,15 @@ const testDatabaseConnection = async () => {
   } finally {
     await knex.destroy();
   }
+}
+
+testDatabaseConnection();
+
+const getTransaction = async () => {
+
+  const transaction = await knex.transaction()
+
+  return {transaction};
 }
 
 const commitTransaction = ({ transaction }) => transaction.commit();
