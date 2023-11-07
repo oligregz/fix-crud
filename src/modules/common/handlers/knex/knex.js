@@ -8,6 +8,8 @@ const knex = require('knex')({
   pool: {
     min: 1,
     max: 4,
+  },ssl: {
+    rejectUnauthorized: false,
   },
 });
 
