@@ -4,7 +4,7 @@ This test consists of validating and correcting an application. It will evaluate
 
 <br>
 
-## 📜 Recomendações 
+## 📜 Recommendations
 
 To solve this API, it is desirable that the developer knows the following technologies in advance, and if he doesn't know them, he ends up learning them during the test.
 
