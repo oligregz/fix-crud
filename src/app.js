@@ -39,7 +39,7 @@ const onSwaggerCreated = (error, swaggerExpress) => {
   if (error) throw error;
 
   const swaggerDocument = swaggerExpress.runner.swagger;
-  app.use('/api/v1/docs', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument));
+  app.use('/api/v2/docs', SwaggerUi.serve, SwaggerUi.setup(swaggerDocument));
   swaggerExpress.register(app); // register middlewares
   app.listen(port, () => console.info('onAppStart', { port }));
 };

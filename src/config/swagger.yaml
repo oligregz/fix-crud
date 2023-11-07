@@ -3,7 +3,7 @@ info:
   description: "Controle Simples de Postagens com Usuários"
   version: "1.0.0"
   title: "posts_control"
-basePath: "/api/v1"
+basePath: "/api/v2"
 consumes:
   - "application/json"
 produces:
@@ -137,6 +137,10 @@ paths:
       operationId: listPostHandler
       parameters:
         - name: user_id
+          in: query
+          type: string
+          required: false
+        - name: post_id
           in: query
           type: string
           required: false
