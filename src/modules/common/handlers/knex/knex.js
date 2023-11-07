@@ -1,14 +1,10 @@
 'use strict'
 
+require("dotenv").config();
+
 const knex = require('knex')({
     client: 'pg',
-    connection: {
-      host: process.env.WRITER_PG_HOST,
-      user: process.env.WRITER_PG_USER,
-      password: process.env.WRITER_PG_PASS,
-      port: process.env.PORT,
-      database: 'main'
-  },
+    connection: process.env.DATABASE_URL,
   pool: {
     min: 1,
     max: 4,
