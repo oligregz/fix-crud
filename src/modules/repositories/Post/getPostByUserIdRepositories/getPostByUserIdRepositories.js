@@ -16,7 +16,6 @@ const getPostByUserIdRepositories = async ({
     }
 
     const posts = response.map((post) => post);
-    console.log('posts: ', posts)
 
     return posts;
 

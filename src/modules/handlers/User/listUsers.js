@@ -8,7 +8,7 @@ const {
 } = require('../../services');
 
 
-const listUsersHandler = async (req, res, next) => {
+const listUserHandler = async (req, res, next) => {
     try{
         const {
             user_id
@@ -32,5 +32,5 @@ const listUsersHandler = async (req, res, next) => {
 }
 
 module.exports = {
-    listUsersHandler
+    listUserHandler
 }

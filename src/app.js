@@ -5,7 +5,7 @@ const SwaggerUi = require('swagger-ui-express');
 const express = require('express');
 const { buildHandlers } = require('./modules');
 const { handlers } = buildHandlers();
-const { listUsersHandler } = require('./modules/handlers/User/listUsers');
+const { listUserHandler } = require('./modules/handlers/User/listUsers');
 const { createUserHandler } = require('./modules/handlers/User/createUser');
 const { updateUserHandler } = require('./modules/handlers/User/updateUser');
 const { deleteUserHandler } = require('./modules/handlers/User/deleteUser');
@@ -44,15 +44,15 @@ const onSwaggerCreated = (error, swaggerExpress) => {
   app.listen(port, () => console.info('onAppStart', { port }));
 };
 
-app.get('/api/v2/users', listUsersHandler);
-app.post('/api/v2/users', createUserHandler);
-app.put('/api/v2/users', updateUserHandler);
-app.delete('/api/v2/users', deleteUserHandler);
+app.get('/api/v2/user', listUserHandler);
+app.post('/api/v2/user', createUserHandler);
+app.put('/api/v2/user', updateUserHandler);
+app.delete('/api/v2/user', deleteUserHandler);
 
-app.get('/api/v2/posts', listPostHandler);
-app.post('/api/v2/posts', createPostHandler);
-app.put('/api/v2/posts', updatePostHandler);
-app.delete('/api/v2/posts', deletePostHandler);
+app.get('/api/v2/post', listPostHandler);
+app.post('/api/v2/post', createPostHandler);
+app.put('/api/v2/post', updatePostHandler);
+app.delete('/api/v2/post', deletePostHandler);
 
 SwaggerExpress.create(swaggerConfig, onSwaggerCreated);
 
