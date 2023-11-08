@@ -1,11 +1,8 @@
-const { 
-    client
-} = require('../../../common/handlers')
-
+const knex = require('../../../../database');
 
 const getUserRepositories = async ({ user_id }) => {
 
-    const response = await client('users').where({ id: user_id});
+    const response = await knex('users').where({ id: user_id});
     
     const has_response = Array.isArray(response) && response.length > 0;
 

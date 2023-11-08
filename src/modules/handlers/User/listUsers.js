@@ -20,12 +20,17 @@ const listUserHandler = async (req, res, next) => {
 
         const users_response = !has_user_id && await getAllUsersService();
         
-        const users = [
-            ...user_response ? user_response.user : [],
-            ...users_response ? users_response : []
-        ];
+        const users = [];
 
-        return res.status(httpStatusCodes.StatusCodes.OK).send({users});
+        if (user_response && Array.isArray(user_response.user)) {
+          users.push(...user_response.user);
+        };
+        
+        if (users_response && Array.isArray(users_response)) {
+          users.push(...users_response);
+        };
+
+        return res.status(200).send({ users });
     }catch(error){
         return httpErrorHandler({ req, res, error })
     }

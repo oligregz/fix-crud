@@ -1,9 +1,9 @@
-const { client } = require('../../../common/handlers/knex/knex');
+const knex = require('../../../../database');
 
-const createUserRepositories = async ({ user  }) => {
+const createUserRepositories = async ({ user }) => {
     try {
 
-        const response = await client('users')
+        const response = await knex('users')
             .insert({
                 user_email: user.user_email,
                 user_password: user.user_password,
@@ -13,7 +13,7 @@ const createUserRepositories = async ({ user  }) => {
         return response;
 
     } catch (err) {
-        throw new Error(err)
+        throw new Error(err);
     }
 }
 
