@@ -1,15 +1,12 @@
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.up = function(knex) {
-  
+exports.up = function (knex) {
+  return knex.schema.createTable('posts', (tabela) => {
+    tabela.increments('id').primary();
+    tabela.integer('author_id').notNullable();
+    tabela.string('post_text', 200);
+  });
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
-exports.down = function(knex) {
-  
+exports.down = function (knex) {
+  return knex.schema.dropTableIfExists('posts');
 };
+
