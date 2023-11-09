@@ -27,7 +27,7 @@ const whitelist = [
 
 app.use(express.json());
 app.use(cors({
-  origin: whitelist.forEach((url) => url)
+  origin: "*"
 }))
 
 const swaggerConfig = {

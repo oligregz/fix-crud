@@ -30,7 +30,7 @@ const listUserHandler = async (req, res, next) => {
           users.push(...users_response);
         };
 
-        return res.status(200).send({ users });
+        return res.status(httpStatusCodes.StatusCodes.OK).send({ users });
     }catch(error){
         return httpErrorHandler({ req, res, error })
     }
